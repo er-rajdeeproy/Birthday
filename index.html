@@ -76,8 +76,8 @@
             </div>
             <div class="min-w-0 flex-1">
               <p class="text-xs font-semibold uppercase tracking-[.24em] text-rose-500">music for your day</p>
-              <h2 id="musicPlayerTitle" class="mt-1 truncate text-lg font-bold text-slate-800">Birthday Love Theme</h2>
-              <p class="truncate text-sm text-slate-500">By You &amp; Me</p>
+              <h2 id="musicPlayerTitle" class="mt-1 truncate text-lg font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-200/80" contenteditable="true" role="textbox" aria-label="Track title" spellcheck="false">Birthday Love Theme</h2>
+              <p id="musicPlayerArtist" class="truncate text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-200/80" contenteditable="true" role="textbox" aria-label="Artist name" spellcheck="false">By You &amp; Me</p>
               <div class="mt-3 flex items-center gap-3">
                 <button id="musicToggle" type="button" class="rounded-full bg-rose-600 px-4 py-2 text-sm font-bold text-white shadow-md shadow-rose-300/50 transition hover:bg-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-200 disabled:cursor-not-allowed disabled:opacity-60" aria-label="Play birthday music" aria-pressed="false">
                   ▶ Play
@@ -92,7 +92,7 @@
               <span id="musicElapsed">0:00</span>
               <span id="musicDuration">0:00</span>
             </div>
-            <div id="musicProgress" class="group relative h-3 w-full cursor-pointer rounded-full bg-rose-100/90 focus:outline-none focus:ring-4 focus:ring-rose-200" role="slider" tabindex="0" aria-label="Seek track position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0:00 of 0:00">
+            <div id="musicProgress" class="group relative h-3 w-full cursor-pointer touch-none rounded-full bg-rose-100/90 focus:outline-none focus:ring-4 focus:ring-rose-200" role="slider" tabindex="0" aria-label="Seek track position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0:00 of 0:00">
               <div id="musicProgressFill" class="h-full rounded-full bg-gradient-to-r from-rose-500 to-fuchsia-500 transition-[width] duration-150 ease-out" style="width:0%"></div>
             </div>
             <p id="musicStatus" class="mt-2 min-h-5 text-xs font-semibold text-rose-700" aria-live="polite">Ready when you are. Tap play to start the song.</p>
@@ -176,6 +176,9 @@
     const musicDuration = document.getElementById('musicDuration');
     const musicStatus = document.getElementById('musicStatus');
     const musicVisualWrap = document.getElementById('musicVisualWrap');
+    const musicPlayerTitle = document.getElementById('musicPlayerTitle');
+    const musicPlayerArtist = document.getElementById('musicPlayerArtist');
+    let isProgressSeeking = false;
 
     function formatTime(seconds) {
       if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
@@ -217,8 +220,38 @@
 
     function setMissingAudioState() {
       musicToggle.disabled = true;
+      musicVolume.disabled = true;
+      musicProgress.tabIndex = -1;
+      musicProgress.setAttribute('aria-disabled', 'true');
       updateMusicButton();
       setMusicStatus('Add your file at assets/birthday-music.mp3 to enable playback.');
+    }
+
+    function sanitizeEditableText(element, fallbackText) {
+      const compactText = element.textContent.replace(/\s+/g, ' ').trim();
+      if (!compactText) {
+        element.textContent = fallbackText;
+        return fallbackText;
+      }
+      element.textContent = compactText;
+      return compactText;
+    }
+
+    function commitEditableMusicText(target) {
+      if (target === musicPlayerTitle) {
+        const title = sanitizeEditableText(musicPlayerTitle, 'Birthday Love Theme');
+        setMusicStatus(`Track title updated to “${title}”.`);
+        return;
+      }
+      if (target === musicPlayerArtist) {
+        const artist = sanitizeEditableText(musicPlayerArtist, 'By You & Me');
+        setMusicStatus(`Artist updated to “${artist}”.`);
+      }
+    }
+
+    function seekFromClientX(clientX) {
+      const bounds = musicProgress.getBoundingClientRect();
+      seekToRatio((clientX - bounds.left) / bounds.width);
     }
 
     function getAudioContext() {
@@ -346,11 +379,37 @@
     });
     birthdayMusic.addEventListener('error', setMissingAudioState);
 
-    musicProgress.addEventListener('click', (event) => {
-      const bounds = musicProgress.getBoundingClientRect();
-      seekToRatio((event.clientX - bounds.left) / bounds.width);
+    [musicPlayerTitle, musicPlayerArtist].forEach((element) => {
+      element.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          element.blur();
+        }
+      });
+      element.addEventListener('blur', () => commitEditableMusicText(element));
+    });
+
+    musicProgress.addEventListener('click', (event) => seekFromClientX(event.clientX));
+    musicProgress.addEventListener('pointerdown', (event) => {
+      if (musicToggle.disabled) return;
+      isProgressSeeking = true;
+      musicProgress.setPointerCapture(event.pointerId);
+      seekFromClientX(event.clientX);
+    });
+    musicProgress.addEventListener('pointermove', (event) => {
+      if (!isProgressSeeking) return;
+      seekFromClientX(event.clientX);
+    });
+    musicProgress.addEventListener('pointerup', (event) => {
+      if (!isProgressSeeking) return;
+      isProgressSeeking = false;
+      musicProgress.releasePointerCapture(event.pointerId);
+    });
+    musicProgress.addEventListener('pointercancel', () => {
+      isProgressSeeking = false;
     });
     musicProgress.addEventListener('keydown', (event) => {
+      if (musicProgress.getAttribute('aria-disabled') === 'true') return;
       if (!Number.isFinite(birthdayMusic.duration) || birthdayMusic.duration <= 0) return;
       const key = event.key;
       const step = 5 / birthdayMusic.duration;
