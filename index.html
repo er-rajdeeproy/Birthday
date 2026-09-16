@@ -31,7 +31,7 @@
     .music-playing .music-visual { animation-play-state: running; }
     @keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-18px) rotate(5deg); } }
     @keyframes pluck { 0% { transform: scaleY(1); } 18% { transform: scaleY(1.75) skewX(5deg); } 45% { transform: scaleY(.72) skewX(-3deg); } 100% { transform: scaleY(1); } }
-    @keyframes notePop { 0% { opacity: 0; transform: translateY(8px) scale(.9); } 30%,75% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-8px) scale(.96); } }
+    @keyframes notePop { 0% { opacity: 0; transform: translateY(8px) scale(.9); } 30%,75% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-8px) scale(.9); } }
     @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     @keyframes pulseGlow { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236,72,153,.15); } 50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(236,72,153,0); } }
     @keyframes heartDrift { 0%,100% { transform: translateY(0) scale(1); opacity: .55; } 50% { transform: translateY(-8px) scale(1.08); opacity: .9; } }
@@ -49,7 +49,7 @@
   <header class="mx-auto max-w-7xl px-5 pb-8 pt-6 sm:px-8 lg:px-12">
     <nav class="flex items-center justify-between" aria-label="Main navigation">
       <a href="#top" class="display-font text-xl font-bold text-rose-700">for my favorite person ♡</a>
-      <a href="#memories" class="rounded-full border border-rose-200 bg-white/70 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-rose-400">memories ↓</a>
+      <a href="#memories" class="rounded-full border border-rose-200 bg-white/70 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-rose-200">our memories</a>
     </nav>
   </header>
 
@@ -60,10 +60,10 @@
           <span aria-hidden="true">✦</span> today is all about you <span aria-hidden="true">✦</span>
         </div>
         <h1 class="display-font max-w-3xl text-5xl font-bold leading-[1.04] text-slate-900 sm:text-6xl lg:text-7xl">Happy Birthday! <span class="gradient-text">🎂✨</span></h1>
-        <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">To the person who makes ordinary moments feel like little miracles: may your day be wrapped in laughter, soft surprises, and every kind of love you deserve.</p>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">To the person who makes ordinary moments feel like little miracles: may your day be wrapped in laughter, soft surprises, and all the love you deserve.</p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
-          <button id="celebrateBtn" class="rounded-full bg-rose-600 px-6 py-3 font-bold text-white shadow-lg shadow-rose-300/50 transition hover:-translate-y-0.5 hover:bg-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-200">Celebrate you 🎉</button>
-          <a href="#guitar" class="rounded-full border border-rose-200 bg-white/80 px-6 py-3 font-bold text-rose-700 transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-rose-100">Play a birthday song ♫</a>
+          <button id="celebrateBtn" class="rounded-full bg-rose-600 px-6 py-3 font-bold text-white shadow-lg shadow-rose-300/50 transition hover:-translate-y-0.5 hover:bg-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-200">Celebrate</button>
+          <a href="#guitar" class="rounded-full border border-rose-200 bg-white/80 px-6 py-3 font-bold text-rose-700 transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-rose-100">Play a song</a>
         </div>
         <section class="music-card relative mt-8 max-w-xl overflow-hidden rounded-3xl p-5 backdrop-blur md:p-6" aria-labelledby="musicPlayerTitle">
           <span class="music-heart pointer-events-none absolute right-4 top-3 text-xl text-rose-300" aria-hidden="true">♥</span>
@@ -71,15 +71,15 @@
           <span class="music-sparkle pointer-events-none absolute bottom-4 right-8 text-sm text-orange-300" aria-hidden="true">✦</span>
           <span class="music-sparkle delay pointer-events-none absolute left-4 bottom-6 text-xs text-pink-300" aria-hidden="true">✧</span>
           <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <div id="musicVisualWrap" class="mx-auto flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-300 via-pink-200 to-violet-200 p-[3px] shadow-lg shadow-rose-200/60 sm:mx-0">
+            <div id="musicVisualWrap" class="mx-auto flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-300 via-pink-200 to-violet-200 p-[3px] shadow-lg shadow-pink-200/60 sm:mx-0">
               <div class="music-visual flex h-full w-full items-center justify-center rounded-full bg-white/90 text-3xl text-rose-500">💗</div>
             </div>
             <div class="min-w-0 flex-1">
               <p class="text-xs font-semibold uppercase tracking-[.24em] text-rose-500">music for your day</p>
-              <h2 id="musicPlayerTitle" class="mt-1 truncate text-lg font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-200/80" contenteditable="true" role="textbox" aria-label="Track title">Birthday Love Theme</h2>
-              <p id="musicPlayerArtist" class="truncate text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-200/80" contenteditable="true" role="textbox" aria-label="Artist name">By You &amp; Me</p>
+              <h2 id="musicPlayerTitle" class="mt-1 truncate text-lg font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-200/80" contenteditable="true" role="textbox" aria-label="Track title" spellcheck="false">Birthday Love Theme</h2>
+              <p id="musicPlayerArtist" class="truncate text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-200/80" contenteditable="true" role="textbox" aria-label="Artist name" spellcheck="false">By You &amp; Me</p>
               <div class="mt-3 flex items-center gap-3">
-                <button id="musicToggle" type="button" class="rounded-full bg-rose-600 px-4 py-2 text-sm font-bold text-white shadow-md shadow-rose-300/50 transition hover:bg-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-200" aria-pressed="false" aria-label="Play birthday music">▶ Play</button>
+                <button id="musicToggle" type="button" class="rounded-full bg-rose-600 px-4 py-2 text-sm font-bold text-white shadow-md shadow-rose-300/50 transition hover:bg-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-200">��� Play</button>
                 <label for="musicVolume" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume</label>
                 <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.5" class="h-2 w-28 cursor-pointer accent-rose-500 sm:w-32" aria-label="Music volume">
               </div>
@@ -90,7 +90,7 @@
               <span id="musicElapsed">0:00</span>
               <span id="musicDuration">0:00</span>
             </div>
-            <div id="musicProgress" class="group relative h-3 w-full cursor-pointer touch-none rounded-full bg-rose-100/90 focus:outline-none focus:ring-4 focus:ring-rose-200" role="slider" tabindex="0" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0:00 of 0:00">
+            <div id="musicProgress" class="group relative h-3 w-full cursor-pointer touch-none rounded-full bg-rose-100/90 focus:outline-none focus:ring-4 focus:ring-rose-200" role="slider" tabindex="0" aria-label="Music progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0:00 of 0:00">
               <div id="musicProgressFill" class="h-full rounded-full bg-gradient-to-r from-rose-500 to-fuchsia-500 transition-[width] duration-150 ease-out" style="width:0%"></div>
             </div>
             <p id="musicStatus" class="mt-2 min-h-5 text-xs font-semibold text-rose-700" aria-live="polite">Ready when you are. Tap play to start the song.</p>
@@ -104,7 +104,7 @@
       <div class="relative mx-auto w-full max-w-lg">
         <div class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-pink-300/40 via-white/20 to-violet-300/40 blur-2xl"></div>
         <div class="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/75 p-7 shadow-2xl shadow-rose-200/50 backdrop-blur sm:p-10">
-          <div class="mb-8 flex items-center justify-between"><span class="text-4xl" aria-hidden="true">🌷</span><span class="text-4xl" aria-hidden="true">💌</span><span class="text-4xl" aria-hidden="true">🌙</span></div>
+          <div class="mb-8 flex items-center justify-between"><span class="text-4xl" aria-hidden="true">🌷</span><span class="text-4xl" aria-hidden="true">💌</span><span class="text-4xl" aria-hidden="true">🎀</span></div>
           <p class="text-sm font-bold uppercase tracking-[.28em] text-rose-500">a little birthday letter</p>
           <p class="display-font mt-5 text-3xl leading-tight text-slate-800">“Your existence is one of my favorite things in this whole world.”</p>
           <div class="mt-8 flex items-center gap-3 text-sm text-slate-500"><span class="h-px flex-1 bg-rose-200"></span><span>with all my heart</span><span class="h-px flex-1 bg-rose-200"></span></div>
@@ -113,7 +113,7 @@
     </section>
 
     <section id="guitar" class="mx-auto max-w-7xl scroll-mt-6 px-5 py-16 sm:px-8 lg:px-12">
-      <div class="mb-10 max-w-2xl"><p class="font-bold uppercase tracking-[.24em] text-fuchsia-600">a song for you</p><h2 class="display-font mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">Strum a little birthday magic</h2><p class="mt-4 leading-7 text-slate-600">Click or tap a string to hear its note. You can also hover over the strings for a tiny visual vibration.</p></div>
+      <div class="mb-10 max-w-2xl"><p class="font-bold uppercase tracking-[.24em] text-fuchsia-600">a song for you</p><h2 class="display-font mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">Some strings, a little magic, and a lot of love.</h2></div>
       <div class="grid items-center gap-8 lg:grid-cols-[1fr_280px]">
         <div class="relative overflow-hidden rounded-[2rem] border border-amber-200 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 p-5 shadow-xl shadow-orange-100 sm:p-8">
           <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full border-[22px] border-amber-200/40"></div>
@@ -122,61 +122,57 @@
             <div class="min-w-0 flex-1 rounded-2xl bg-gradient-to-r from-amber-100 to-amber-200/60 p-4 shadow-inner sm:p-6">
               <div class="mb-4 grid grid-cols-6 gap-2 text-center text-[10px] font-bold uppercase tracking-wider text-amber-900 sm:text-xs"><span>E2</span><span>A2</span><span>D3</span><span>G3</span><span>B3</span><span>E4</span></div>
               <div id="strings" class="space-y-4 sm:space-y-5">
-                <button class="string group relative block h-3 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-300/70" data-string="0" data-freq="82.41" aria-label="Play low E string, E2"><span class="absolute -left-2 -top-5 text-xs font-bold text-amber-900 opacity-0 transition group-hover:opacity-100 sm:-left-8">E2</span></button>
-                <button class="string group relative block h-2.5 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-300/70" data-string="1" data-freq="110" aria-label="Play A string, A2"><span class="absolute -left-2 -top-5 text-xs font-bold text-amber-900 opacity-0 transition group-hover:opacity-100 sm:-left-8">A2</span></button>
-                <button class="string group relative block h-2 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-300/70" data-string="2" data-freq="146.83" aria-label="Play D string, D3"><span class="absolute -left-2 -top-5 text-xs font-bold text-amber-900 opacity-0 transition group-hover:opacity-100 sm:-left-8">D3</span></button>
-                <button class="string group relative block h-1.5 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-300/70" data-string="3" data-freq="196" aria-label="Play G string, G3"><span class="absolute -left-2 -top-5 text-xs font-bold text-amber-900 opacity-0 transition group-hover:opacity-100 sm:-left-8">G3</span></button>
-                <button class="string group relative block h-1.5 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-300/70" data-string="4" data-freq="246.94" aria-label="Play B string, B3"><span class="absolute -left-2 -top-5 text-xs font-bold text-amber-900 opacity-0 transition group-hover:opacity-100 sm:-left-8">B3</span></button>
-                <button class="string group relative block h-1 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-300/70" data-string="5" data-freq="329.63" aria-label="Play high E string, E4"><span class="absolute -left-2 -top-5 text-xs font-bold text-amber-900 opacity-0 transition group-hover:opacity-100 sm:-left-8">E4</span></button>
+                <button class="string group relative block h-3 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-200" data-freq="82.41" data-string="0" aria-label="Play E2 string"></button>
+                <button class="string group relative block h-2.5 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-200" data-freq="110.00" data-string="1" aria-label="Play A2 string"></button>
+                <button class="string group relative block h-2 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-200" data-freq="146.83" data-string="2" aria-label="Play D3 string"></button>
+                <button class="string group relative block h-1.5 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-200" data-freq="196.00" data-string="3" aria-label="Play G3 string"></button>
+                <button class="string group relative block h-1.5 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-200" data-freq="246.94" data-string="4" aria-label="Play B3 string"></button>
+                <button class="string group relative block h-1 w-full cursor-pointer rounded-full border-y border-amber-900/30 bg-gradient-to-b from-slate-300 via-white to-slate-400 opacity-90 focus:outline-none focus:ring-4 focus:ring-rose-200" data-freq="329.63" data-string="5" aria-label="Play E4 string"></button>
               </div>
               <div class="mt-5 grid grid-cols-8 gap-1 opacity-50 sm:mt-7"><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span><span class="h-8 border-l border-amber-800/40"></span></div>
             </div>
-            <div class="hidden h-48 w-16 shrink-0 rounded-full bg-gradient-to-r from-amber-800 via-amber-950 to-amber-800 shadow-xl sm:block"><div class="mx-auto mt-10 h-24 w-10 rounded-full border-4 border-amber-300/30"></div></div>
+            <div class="hidden h-48 w-16 shrink-0 rounded-full bg-gradient-to-r from-amber-800 via-amber-950 to-amber-800 shadow-xl sm:block"><div class="mx-auto mt-10 h-24 w-10 rounded-full border-4 border-amber-300/80 bg-amber-100/80"></div></div>
           </div>
-          <div id="nowPlaying" class="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/85 px-4 py-2 text-sm font-bold text-rose-700 opacity-0 shadow-md">♪ <span></span></div>
+          <div id="nowPlaying" class="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/85 px-4 py-2 text-sm font-bold text-rose-700 opacity-0 shadow-md">♪ <span>E2</span></div>
         </div>
         <div class="rounded-[2rem] border border-fuchsia-100 bg-white/80 p-6 shadow-lg shadow-fuchsia-100/50">
-          <div class="mb-5 text-5xl" aria-hidden="true">🎶</div><h3 class="display-font text-2xl font-bold text-slate-900">One tiny concert</h3><p class="mt-3 text-sm leading-6 text-slate-600">Let this little virtual guitar play the birthday tune just for you.</p>
-          <button id="melodyBtn" class="mt-6 w-full rounded-2xl bg-fuchsia-600 px-5 py-3 font-bold text-white shadow-lg shadow-fuchsia-200 transition hover:bg-fuchsia-700 focus:outline-none focus:ring-4 focus:ring-fuchsia-200">Play “Happy Birthday” ▶</button>
-          <button id="stopBtn" class="mt-3 hidden w-full rounded-2xl border border-slate-200 px-5 py-3 font-bold text-slate-600 transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200">Stop melody ■</button>
+          <div class="mb-5 text-5xl" aria-hidden="true">🎶</div><h3 class="display-font text-2xl font-bold text-slate-900">One tiny concert</h3><p class="mt-3 text-sm leading-6 text-slate-600">Tap the strings and let the melody feel like a little love song written just for you.</p>
+          <button id="melodyBtn" class="mt-6 w-full rounded-2xl bg-fuchsia-600 px-5 py-3 font-bold text-white shadow-lg shadow-fuchsia-200 transition hover:bg-fuchsia-700 focus:outline-none focus:ring-4 focus:ring-fuchsia-200">Play melody</button>
+          <button id="stopBtn" class="mt-3 hidden w-full rounded-2xl border border-slate-200 px-5 py-3 font-bold text-slate-600 transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200">Stop</button>
           <p id="melodyStatus" class="mt-4 min-h-5 text-center text-xs font-semibold text-fuchsia-700" aria-live="polite"></p>
         </div>
       </div>
     </section>
 
     <section id="memories" class="mx-auto max-w-7xl scroll-mt-6 px-5 py-16 sm:px-8 lg:px-12">
-      <div class="mb-10 text-center"><p class="font-bold uppercase tracking-[.24em] text-rose-500">our little world</p><h2 class="display-font mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">Memories & love notes</h2><p class="mx-auto mt-4 max-w-2xl leading-7 text-slate-600">Replace the placeholder image URLs in the HTML with your favorite photos. Each polaroid has a caption ready for your story.</p></div>
+      <div class="mb-10 text-center"><p class="font-bold uppercase tracking-[.24em] text-rose-500">our little world</p><h2 class="display-font mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">A few tiny symbols of us.</h2></div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <figure class="rotate-[-2deg] bg-white p-3 pb-6 shadow-xl shadow-rose-100 transition hover:rotate-0 hover:-translate-y-1">
-          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-rose-100 to-orange-100 text-5xl">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="A favorite memory" class="h-full w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-            <span class="hidden" aria-hidden="true">🌸</span>
+          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-rose-100 to-orange-100 text-7xl">
+            <span aria-hidden="true">💑</span>
           </div>
-          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">the day everything felt golden</figcaption>
+          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">us, always</figcaption>
         </figure>
         <figure class="rotate-[2deg] bg-white p-3 pb-6 shadow-xl shadow-violet-100 transition hover:rotate-0 hover:-translate-y-1">
-          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-violet-100 to-pink-100 text-5xl">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="A joyful memory" class="h-full w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-            <span class="hidden" aria-hidden="true">✨</span>
+          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-violet-100 to-pink-100 text-7xl">
+            <span aria-hidden="true">👩‍❤️‍👨</span>
           </div>
-          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">my favorite kind of laughter</figcaption>
+          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">forever favorite</figcaption>
         </figure>
         <figure class="rotate-[-1deg] bg-white p-3 pb-6 shadow-xl shadow-orange-100 transition hover:rotate-0 hover:-translate-y-1">
-          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-orange-100 to-yellow-100 text-5xl">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="A sweet memory" class="h-full w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-            <span class="hidden" aria-hidden="true">☀️</span>
+          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-orange-100 to-yellow-100 text-7xl">
+            <span aria-hidden="true">💞</span>
           </div>
-          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">sunshine looks like you</figcaption>
+          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">all my heart</figcaption>
         </figure>
         <figure class="rotate-[3deg] bg-white p-3 pb-6 shadow-xl shadow-pink-100 transition hover:rotate-0 hover:-translate-y-1">
-          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-pink-100 to-fuchsia-100 text-5xl">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80" alt="A treasured memory" class="h-full w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-            <span class="hidden" aria-hidden="true">💗</span>
+          <div class="flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-pink-100 to-fuchsia-100 text-7xl">
+            <span aria-hidden="true">🥰</span>
           </div>
-          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">forever one of my best days</figcaption>
+          <figcaption class="display-font mt-4 text-center text-xl text-slate-700">my favorite smile</figcaption>
         </figure>
       </div>
-      <div class="mt-10 grid gap-5 md:grid-cols-3"><article class="rounded-3xl border border-rose-100 bg-white/75 p-6"><div class="text-2xl">💌</div><p class="mt-4 leading-7 text-slate-600">“I hope this next chapter is gentle with you, wildly exciting, and full of reasons to smile.”</p></article><article class="rounded-3xl border border-fuchsia-100 bg-white/75 p-6"><div class="text-2xl">🌙</div><p class="mt-4 leading-7 text-slate-600">“Even on the quiet days, please remember how deeply loved you are.”</p></article><article class="rounded-3xl border border-orange-100 bg-white/75 p-6"><div class="text-2xl">🌷</div><p class="mt-4 leading-7 text-slate-600">“Thank you for being your bright, beautiful, completely irreplaceable self.”</p></article></div>
+      <div class="mt-10 grid gap-5 md:grid-cols-3"><article class="rounded-3xl border border-rose-100 bg-white/75 p-6"><div class="text-2xl">💌</div><p class="mt-4 leading-7 text-slate-600">“You are the softest part of my world, and I’m grateful for every day I get to know your heart.”</p></article><article class="rounded-3xl border border-rose-100 bg-white/75 p-6"><div class="text-2xl">✨</div><p class="mt-4 leading-7 text-slate-600">“May this year bring you all the same joy you bring to everyone around you, times a thousand.”</p></article><article class="rounded-3xl border border-rose-100 bg-white/75 p-6"><div class="text-2xl">🎉</div><p class="mt-4 leading-7 text-slate-600">“Happy birthday to the love of my life—may your dreams sparkle just as brightly as you do.”</p></article></div>
     </section>
   </main>
 
